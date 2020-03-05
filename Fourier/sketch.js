@@ -4,9 +4,10 @@ let fourierX;
 let fourierY;
 let time = 0;
 let path = [];
+let flag = false;
 
 function setup() {
-    createCanvas(800, 600);
+    createCanvas(1825, 950);
     const skip = 8;
     for (let i = 0; i < drawing.length; i += skip) {
         x.push(drawing[i].x);
@@ -57,9 +58,12 @@ function draw() {
 
     const dt = TWO_PI / fourierY.length;
     time += dt;
-
+    if (flag) {
+        noLoop();
+    }
     if (time > TWO_PI) {
         time = 0;
-        path = [];
+        // path = [];
+        flag = true;
     }
 }
