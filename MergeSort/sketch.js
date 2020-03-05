@@ -1,9 +1,25 @@
 var arr = new Array();
 var colors = new Array();
 
-// function sleep(ms) {
-//     return new Promise(resolve => setTimeout(resolve, ms));
-// }
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function call(arr) {
+
+    arr.sort((a, b) => a - b);
+    // });
+    // await Promise.all([
+    //     Promise.resolve(10),
+    //     Promise.resolve(4),
+    //     Promise.resolve(7),
+    //     arr.sort((a, b) => a - b)
+    // ]);
+}
+
+async function check(a, b) {
+    await sleep(10);
+    return a - b;
+}
 
 function setup() {
     createCanvas(900, 900);
@@ -11,11 +27,12 @@ function setup() {
     colorMode(HSB);
     for (var i = 0; i < width; i++) {
         var hc = random(0, width);
-        arr.push(width - i - 1);
+        arr.push(hc);
         colors.push(map(hc, 0, width, 255, 0));
     }
-    arr = mergesort(arr, 0, arr.length - 1);
-    // arr.sort();
+    // arr = mergesort(arr, 0, arr.length - 1);
+    call(arr);
+    // arr.sort((a, b) => a - b);
     console.log(arr);
 }
 
@@ -63,7 +80,7 @@ function merge(arr, start, mid, end) {
     var i = 0;
     var j = 0;
 
-    for (var k = start; k < end; k++) {
+    for (var k = start; k < end + 1; k++) {
         if (lArray[i] <= rArray[j]) {
             arr[k] = lArray[i];
             i++;
